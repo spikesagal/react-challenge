@@ -7,14 +7,16 @@ import NotFound from 'src/components/NotFound';
 
 const App = (): React.ReactNode => {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route index element={<Pokemons />} />
-        <Route path='abilities/' element={<NotFound />} />
-        <Route path='abilities/:pokemonName' element={<Abilities />} />
-        <Route path='*' element={<NotFound />} />
-      </Route>
-    </Routes>
+    <div id="pokedex">
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Pokemons />} />
+          <Route path='abilities/' element={<NotFound />} />
+          <Route path='abilities/:pokemonName' element={<Abilities />} />
+          <Route path='*' element={<NotFound />} />
+        </Route>
+      </Routes>
+    </div>
   );
 };
 
