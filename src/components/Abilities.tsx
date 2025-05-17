@@ -17,6 +17,9 @@ function invariant(value: unknown): asserts value {
 const Abilities = (): React.ReactNode => {
   const { pokemonName } = useParams();
   invariant(pokemonName);
+
+  // using react-query useQueries to asynchronously render results;
+  // ignore errors
   const results = useAbilities(pokemonName);
 
   return (

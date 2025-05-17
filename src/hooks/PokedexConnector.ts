@@ -35,6 +35,10 @@ export const useAbilities = (pokemonName: string) => {
     staleTime: QUERY_STALE_TIME
   });
 
+  // This is a chained query. It will spawn new queries when
+  // abilitiesNames becomes available (empty list otherwise).
+  // Each of the spawned queries will asynchronously render
+  // its own result.
   const mappedAbilities = useQueries({
     queries: abilitiesNames
       ? abilitiesNames.map((abilityName) => {
