@@ -1,13 +1,19 @@
 import { Routes, Route } from 'react-router';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import Layout from 'src/components/Layout';
 import Pokemons from 'src/components/Pokemons';
 import Abilities from 'src/components/Abilities';
 import NotFound from 'src/components/NotFound';
 
+const queryClient = new QueryClient();
 const App = (): React.ReactNode => {
   return (
-    <div id="pokedex">
+    <QueryClientProvider client={queryClient}>
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Pokemons />} />
@@ -16,7 +22,7 @@ const App = (): React.ReactNode => {
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
-    </div>
+    </QueryClientProvider>
   );
 };
 
