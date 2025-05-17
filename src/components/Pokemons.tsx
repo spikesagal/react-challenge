@@ -21,10 +21,16 @@ const Pokemons = (): React.ReactNode => {
     <div className='box'>
       <div className='heading'>Pokemon name</div>
       {isPending && <HourglassBottomIcon />}
-      {error && <div className='datum'>Something went wrong :(</div>}
+      {error && (
+        <div data-testid='error-message' className='datum'>
+          Something went wrong :(
+        </div>
+      )}
       {data?.pokemons.map((name) => (
         <NavLink key={name} to={`/abilities/${name}`}>
-          <div className='datum'>{name}</div>
+          <div data-testid={`name-${name}`} className='datum'>
+            {name}
+          </div>
         </NavLink>
       ))}
       <div className='pagination'>

@@ -16,27 +16,40 @@ describe('Pokemons Component', () => {
 
   it('renders pokemons correctly', () => {
     (usePokemons as any).mockReturnValue({
-      isPending: true,
-      isFetching: false,
       error: null,
       data: {
         'count': 1302,
-        'pokemons': [
-          'bulbasaur',
-          'ivysaur',
-          'venusaur',
-          'charmander',
-          'charmeleon'
-        ]
+        'pokemons': ['bulbasaur', 'ivysaur']
       }
     });
 
-    render(
+    const { unmount } = render(
       <MemoryRouter>
         <Pokemons />
       </MemoryRouter>
     );
 
-    expect(screen.getByText(/bulbasaur/i)).toBeDefined();
+    expect(screen.getByTestId('name-bulbasaur').textContent).toEqual(
+      'bulbasaur'
+    );
+    expect(screen.getByTestId('name-ivysaur').textContent).toEqual('ivysaur');
+
+    unmount();
+  });
+
+  it('renders pokemons correctly', () => {
+    (usePokemons as any).mockReturnValue({
+      error: 'Uh-oh'
+    });
+
+    const { unmount } = render(
+      <MemoryRouter>
+        <Pokemons />
+      </MemoryRouter>
+    );
+
+    expect(screen.getByTestId('error-message')).toBeDefined();
+
+    unmount();
   });
 });
