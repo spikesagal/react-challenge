@@ -1,4 +1,4 @@
-import '../assets/styles/App.css';
+import 'src/assets/styles/App.css';
 
 const App = (): React.ReactNode => {
   return <div>{/* POKEMONS */}</div>;
