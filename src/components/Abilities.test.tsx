@@ -1,7 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router';
-// import { MemoryRouter as Router, Routes, Route } from 'react-router';
 import { useAbilities } from 'src/hooks/PokedexConnector';
 import Abilities from './Abilities';
 
