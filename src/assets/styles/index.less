@@ -4,6 +4,7 @@ body {
 
 #root {
   @colorBgAlt: #f6f6f6;
+  @colorBgHover: #f0efec;
   @colorBgPagination: #d7e7fc;
   @colorHeader: #9ec1f6; 
   @colorBacklink: #6199f6;
@@ -32,6 +33,10 @@ body {
           flex: 80%;
         }
       }
+    }
+
+    & > a :hover {
+      background-color: @colorBgHover;
     }
   }
 

@@ -12,7 +12,7 @@ const Pokemons = (): React.ReactNode => {
     () => Number(searchParams.get('page') ?? 1),
     [searchParams]
   );
-  const { error, data, isPending } = usePokemons(page); //via useQuery
+  const { error, data, isPending } = usePokemons(page); // via useQuery
   const totalPages = useMemo(
     () => Math.ceil((data?.count ?? 0) / ENTRIES_PER_PAGE),
     [data?.count]
