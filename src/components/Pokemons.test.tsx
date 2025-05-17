@@ -1,14 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter, Route, Routes } from 'react-router';
+import { MemoryRouter } from 'react-router';
+import { usePokemons } from 'src/hooks/PokedexConnector';
 import Pokemons from './Pokemons';
 
 // mock hooks; should be able to run offline
 vi.mock('src/hooks/PokedexConnector', () => ({
   usePokemons: vi.fn()
 }));
-
-import { usePokemons } from 'src/hooks/PokedexConnector';
 
 describe('Pokemons Component', () => {
   beforeEach(() => {
@@ -21,15 +20,15 @@ describe('Pokemons Component', () => {
       isFetching: false,
       error: null,
       data: {
-        "count": 1302,
-        "pokemons": [
-          "bulbasaur",
-          "ivysaur",
-          "venusaur",
-          "charmander",
-          "charmeleon",
+        'count': 1302,
+        'pokemons': [
+          'bulbasaur',
+          'ivysaur',
+          'venusaur',
+          'charmander',
+          'charmeleon'
         ]
-      },
+      }
     });
 
     render(
@@ -38,6 +37,6 @@ describe('Pokemons Component', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText(/bulbasaur/i)).to.exist;
+    expect(screen.getByText(/bulbasaur/i)).toBeDefined();
   });
 });

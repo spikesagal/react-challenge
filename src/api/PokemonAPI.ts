@@ -1,6 +1,4 @@
-import {
-  PokemonClient,
-} from 'pokenode-ts';
+import { PokemonClient } from 'pokenode-ts';
 import { buildWebStorage } from 'axios-cache-interceptor';
 
 // Here the response data per unique request actually caches on local
@@ -12,7 +10,7 @@ const REQUEST_CACHE_STORAGE = buildWebStorage(localStorage, 'axios-cache:');
 const api = new PokemonClient({
   cacheOptions: {
     storage: REQUEST_CACHE_STORAGE,
-    ttl: REQUEST_CACHE_TTL,
+    ttl: REQUEST_CACHE_TTL
   }
 });
 

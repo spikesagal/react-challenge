@@ -1,12 +1,5 @@
-import {
-  PokemonClient,
-  Pokemon,
-  NamedAPIResourceList,
-  NamedAPIResource,
-  Ability
-} from 'pokenode-ts';
+import { Pokemon, NamedAPIResourceList, Ability } from 'pokenode-ts';
 import { useQuery, useQueries } from '@tanstack/react-query';
-import { buildWebStorage } from 'axios-cache-interceptor';
 
 import api from 'src/api/PokemonAPI';
 
@@ -19,14 +12,13 @@ const LANGUAGE = 'en';
 const QUERY_STALE_TIME = 1000; // 1 second
 
 export const usePokemons = (pageNumber: number) => {
-  console.log('pn', pageNumber);
   return useQuery({
     queryKey: ['pokemons', pageNumber],
     queryFn: async () => {
       const offset = RESULTS_PER_PAGE * (pageNumber - 1);
       return api.listPokemons(offset, RESULTS_PER_PAGE);
     },
-    select: ({count, results}: NamedAPIResourceList) => ({
+    select: ({ count, results }: NamedAPIResourceList) => ({
       count,
       pokemons: results.map(({ name }) => name)
     }),
@@ -38,7 +30,7 @@ export const useAbilities = (pokemonName: string) => {
   const { data: abilitiesNames } = useQuery({
     queryKey: ['ability_names', pokemonName],
     queryFn: async () => api.getPokemonByName(pokemonName),
-    select: ({abilities}: Pokemon) =>
+    select: ({ abilities }: Pokemon) =>
       abilities.map(({ ability: { name } }) => name),
     staleTime: QUERY_STALE_TIME
   });
@@ -49,7 +41,7 @@ export const useAbilities = (pokemonName: string) => {
           return {
             queryKey: ['ability_details', abilityName],
             queryFn: async () => api.getAbilityByName(abilityName),
-            select: ({name, effect_entries}: Ability) => {
+            select: ({ name, effect_entries }: Ability) => {
               return {
                 name,
                 effect: effect_entries

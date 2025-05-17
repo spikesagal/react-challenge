@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { useParams, NavLink } from 'react-router';
 
 import { useAbilities } from 'src/hooks/PokedexConnector';
@@ -20,36 +19,25 @@ const Abilities = (): React.ReactNode => {
   invariant(pokemonName);
   const results = useAbilities(pokemonName);
 
-  console.log('data came here:', results);
-
   return (
     <>
-      <div className="box">
+      <div className='box'>
         <div>
-          <div className="heading">
-            Ability
-          </div>
-          <div className="heading">
-            Ability effect
-          </div>
+          <div className='heading'>Ability</div>
+          <div className='heading'>Ability effect</div>
         </div>
-        {results.map(({ data: ability}) =>
-          ability && (
-            <div key={ability?.name}>
-              <div className="datum">
-                {ability?.name}
+        {results.map(
+          ({ data: ability }) =>
+            ability && (
+              <div key={ability?.name}>
+                <div className='datum'>{ability?.name}</div>
+                <div className='datum'>{ability?.effect}</div>
               </div>
-              <div className="datum">
-                {ability?.effect}
-              </div>
-            </div>
-          )
+            )
         )}
       </div>
-      <div className="back-link">
-        <NavLink to="/">
-          Back to list view
-        </NavLink>
+      <div className='back-link'>
+        <NavLink to='/'>Back to list view</NavLink>
       </div>
     </>
   );
