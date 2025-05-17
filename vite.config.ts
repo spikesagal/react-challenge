@@ -13,5 +13,10 @@ export default defineConfig({
         '.js': 'jsx'
       }
     }
+  },
+  resolve: {
+    alias: {
+      src: '/src'
+    }
   }
 });
