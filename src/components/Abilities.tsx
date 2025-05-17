@@ -30,8 +30,12 @@ const Abilities = (): React.ReactNode => {
           ({ data: ability }) =>
             ability && (
               <div key={ability?.name}>
-                <div className='datum'>{ability?.name}</div>
-                <div className='datum'>{ability?.effect}</div>
+                <div data-testid={`name-${ability?.name}`} className='datum'>
+                  {ability?.name}
+                </div>
+                <div data-testid={`effect-${ability?.name}`} className='datum'>
+                  {ability?.effect}
+                </div>
               </div>
             )
         )}

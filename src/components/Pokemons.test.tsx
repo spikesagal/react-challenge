@@ -14,7 +14,7 @@ describe('Pokemons Component', () => {
     vi.clearAllMocks();
   });
 
-  it('renders loading state', () => {
+  it('renders pokemons correctly', () => {
     (usePokemons as any).mockReturnValue({
       isPending: true,
       isFetching: false,
