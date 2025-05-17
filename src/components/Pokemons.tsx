@@ -19,25 +19,27 @@ const Pokemons = (): React.ReactNode => {
   );
 
   return (
-    <div className='box'>
-      <div className='heading'>Pokemon name</div>
-      {isPending && <HourglassBottomIcon />}
-      {error && (
-        <div data-testid='error-message' className='datum'>
-          Something went wrong :(
-        </div>
-      )}
-      {data?.pokemons.map((name) => (
-        <NavLink key={name} to={`/abilities/${name}`}>
-          <div data-testid={`name-${name}`} className='datum'>
-            {name}
+    <>
+      <div className='box'>
+        <div className='heading'>Pokemon name</div>
+        {isPending && <HourglassBottomIcon />}
+        {error && (
+          <div data-testid='error-message' className='datum'>
+            Something went wrong :(
           </div>
-        </NavLink>
-      ))}
+        )}
+        {data?.pokemons.map((name) => (
+          <NavLink key={name} to={`/abilities/${name}`}>
+            <div data-testid={`name-${name}`} className='datum'>
+              {name}
+            </div>
+          </NavLink>
+        ))}
+      </div>
       <div className='pagination'>
         <Pagination page={page} totalPages={totalPages} />
       </div>
-    </div>
+    </>
   );
 };
 
