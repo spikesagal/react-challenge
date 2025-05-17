@@ -33,16 +33,18 @@ const Abilities = (): React.ReactNode => {
             Ability effect
           </div>
         </div>
-        {results.map(({ isPending, error, data: ability, isFetching }) => (
-          <div>
-            <div className="datum">
-              {ability?.name}
+        {results.map(({ data: ability}) =>
+          ability && (
+            <div key={ability?.name}>
+              <div className="datum">
+                {ability?.name}
+              </div>
+              <div className="datum">
+                {ability?.effect}
+              </div>
             </div>
-            <div className="datum">
-              {ability?.effect}
-            </div>
-          </div>
-        ))}
+          )
+        )}
       </div>
       <div className="back-link">
         <NavLink to="/">

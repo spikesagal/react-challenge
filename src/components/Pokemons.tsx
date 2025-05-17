@@ -4,6 +4,7 @@ import FirstPageIcon from '@mui/icons-material/FirstPage';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
+import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 
 import { usePokemons } from 'src/hooks/PokedexConnector';
 import Pagination from './Pagination';
@@ -14,7 +15,7 @@ const Pokemons = (): React.ReactNode => {
     () => Number(searchParams.get('page') ?? 1),
     [searchParams]
   );
-  const { isPending, error, data, isFetching } = usePokemons(page);
+  const { error, data, isPending } = usePokemons(page);
   const totalPages = useMemo(
     () => Math.ceil((data?.count ?? 0) / 5),
     [data?.count]
@@ -25,8 +26,14 @@ const Pokemons = (): React.ReactNode => {
   return (
     <div className="box">
       <div className="heading">Pokemon name</div>
-      {data?.pokemons?.map((name) => (
-        <NavLink to={`/abilities/${name}`}>
+      {isPending && (
+        <HourglassBottomIcon />
+      )}
+      {error && (
+        <div className="datum">Something went wrong :(</div>
+      )}
+      {data?.pokemons.map((name) => (
+        <NavLink key={name} to={`/abilities/${name}`}>
           <div className="datum">{name}</div>
         </NavLink>
       ))}
