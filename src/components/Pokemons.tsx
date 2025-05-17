@@ -23,14 +23,16 @@ const Pokemons = (): React.ReactNode => {
   console.log('data came here:', data);
 
   return (
-    <div>
-      <div>Pokemon name</div>
+    <div className="box">
+      <div className="heading">Pokemon name</div>
       {data?.pokemons?.map((name) => (
         <NavLink to={`/abilities/${name}`}>
-          <div>{name}</div>
+          <div className="datum">{name}</div>
         </NavLink>
       ))}
-      <Pagination page={page} totalPages={totalPages} />
+      <div className="pagination">
+        <Pagination page={page} totalPages={totalPages} />
+      </div>
     </div>
   );
 };

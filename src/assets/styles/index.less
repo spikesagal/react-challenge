@@ -1,11 +1,68 @@
-#root {
-  @bgcolor: lightgray;
+body {
+  margin: 0;
+}
 
-  background-color: beige;
-  div {
-    background-color: @bgcolor;
-    &:hover {
-      background-color: blue;
+#root {
+  @colorBgAlt: #f6f6f6;
+  @colorBgPagination: #d7e7fc;
+  @colorHeader: #9ec1f6; 
+  @colorBacklink: #6199f6;
+
+  font-family: arial;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .box {
+    & > * {
+      display: flex;
+      &:first-child {
+        background-color: @colorHeader;
+      }
+      &:nth-child(even) {
+        background-color: @colorBgAlt;
+      }
+      & > * {
+        &:first-child {
+          flex: 20%;
+        } 
+        &:last-child {
+          flex: 80%;
+        }
+      }
     }
+  }
+
+  .pagination {
+    background-color: @colorBgPagination;
+    text-align: center;
+
+    span {
+      padding: 0 2pt;
+      vertical-align: middle;
+    }
+  }
+
+  .back-link {
+    text-align: right;
+    padding-right: 10pt;
+    a {
+      color: @colorBacklink
+    }
+  }
+
+  .disabled {
+    color: gray;
+  }
+
+  .heading, .datum, .pagination {
+    margin: auto;
+    padding: 10pt;
+  }
+
+  .datum {
+    text-transform: capitalize;
   }
 }
