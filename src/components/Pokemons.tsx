@@ -19,32 +19,36 @@ const Pokemons = ({
 
   return (
     <table>
-      <tr>
-        <th className='heading'>Pokemon name</th>
-      </tr>
-      {error && (
+      <tbody>
         <tr>
-          <td data-testid='error-message' className='datum'>
-            Something went wrong :(
-          </td>
+          <th className='heading'>Pokemon name</th>
         </tr>
-      )}
-      {data?.pokemons.map((name) => (
-        <tr>
-          <td>
-            <NavLink key={name} to={`/abilities/${name}`}>
-              <div data-testid={`name-${name}`} className='name datum'>
+        {error && (
+          <tr>
+            <td data-testid='error-message' className='datum'>
+              Something went wrong :(
+            </td>
+          </tr>
+        )}
+        {data?.pokemons.map((name) => (
+          <tr key={name}>
+            <td>
+              <NavLink
+                to={`/abilities/${name}`}
+                data-testid={`name-${name}`}
+                className='name datum'
+              >
                 {name}
-              </div>
-            </NavLink>
+              </NavLink>
+            </td>
+          </tr>
+        ))}
+        <tr>
+          <td className='pagination'>
+            <Pagination page={page} totalPages={totalPages} />
           </td>
         </tr>
-      ))}
-      <tr>
-        <td className='pagination'>
-          <Pagination page={page} totalPages={totalPages} />
-        </td>
-      </tr>
+      </tbody>
     </table>
   );
 };

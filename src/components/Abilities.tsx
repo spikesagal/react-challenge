@@ -30,27 +30,36 @@ const Abilities = ({
 
   return (
     <>
-      <table>
-        <tr>
-          <td className='heading'>Ability</td>
-          <td className='heading'>Ability effect</td>
-        </tr>
-        {results.map(
-          ({ data: ability }) =>
-            ability && (
-              <tr key={`${ability?.name}_${ability?.slot}`}>
-                <td
-                  data-testid={`name-${ability?.name}`}
-                  className='name datum'
-                >
-                  {ability?.name}
-                </td>
-                <td data-testid={`effect-${ability?.name}`} className='datum'>
-                  {ability?.effect}
-                </td>
-              </tr>
-            )
-        )}
+      <table className='two-col'>
+        <tbody>
+          <tr>
+            <th className='heading'>Ability</th>
+            <th className='heading'>Ability effect</th>
+          </tr>
+          {results.map(
+            ({ data: ability }) =>
+              ability && (
+                <tr key={`${ability?.name}_${ability?.slot}`}>
+                  <td>
+                    <span
+                      data-testid={`name-${ability?.name}`}
+                      className='name datum'
+                    >
+                      {ability?.name}
+                    </span>
+                  </td>
+                  <td>
+                    <span
+                      data-testid={`effect-${ability?.name}`}
+                      className='datum'
+                    >
+                      {ability?.effect}
+                    </span>
+                  </td>
+                </tr>
+              )
+          )}
+        </tbody>
       </table>
       <div className='back-link'>
         <NavLink to={backLink}>Back to list view</NavLink>

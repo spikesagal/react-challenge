@@ -9,8 +9,6 @@ body {
   @colorHeader: #9ec1f6; 
   @colorBacklink: #6199f6;
 
-
-  // Global attrs
   font-family: arial;
   font-size: 1em;
 
@@ -25,6 +23,7 @@ body {
     color: black;
   }
 
+
   table {
     border-spacing: 0;
     width: 100%;
@@ -36,19 +35,35 @@ body {
       &:nth-child(even) {
         background-color: @colorBgAlt;
       }
+
+      & a.datum {
+        &:hover {
+          background-color: @colorBgHover;
+        }
+
+        & > td {
+          display: block;
+        }
+      }
     }
     
-    td {
-      padding: 0;
+    th {
+      font-weight: normal;
+      text-align: left;
+    }
 
-      &:first-child {
-        flex: 20%;
-      } 
-      &:last-child {
-        flex: 80%;
-      }
-      & > a :hover {
-        background-color: @colorBgHover;
+    td, th {
+      padding: 0;
+    }
+
+    &.two-col {
+      td, th {
+        &:first-child {
+          width: 20%;
+        } 
+        &:last-child {
+          width: 80%;
+        }
       }
     }
   }
@@ -77,8 +92,12 @@ body {
   }
 
   .heading, .datum, .pagination {
-    margin: auto;
     padding: 10pt;
+    margin: auto;
+  }
+
+  .datum {
+    display: block;
   }
 
   .name {
