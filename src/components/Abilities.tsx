@@ -32,7 +32,7 @@ const Abilities = (): React.ReactNode => {
         {results.map(
           ({ data: ability }) =>
             ability && (
-              <div key={ability?.name}>
+              <div key={`${ability?.name}_${ability?.slot}`}>
                 <div data-testid={`name-${ability?.name}`} className='datum'>
                   {ability?.name}
                 </div>

@@ -31,7 +31,7 @@ export const useAbilities = (pokemonName: string) => {
     queryKey: ['ability_names', pokemonName],
     queryFn: async () => api.getPokemonByName(pokemonName),
     select: ({ abilities }: Pokemon) =>
-      abilities.map(({ ability: { name } }) => name),
+      abilities.map(({ ability: { name }, slot }) => ({ ability: name, slot })),
     staleTime: QUERY_STALE_TIME
   });
 
@@ -41,10 +41,10 @@ export const useAbilities = (pokemonName: string) => {
   // its own result.
   const mappedAbilities = useQueries({
     queries: abilitiesNames
-      ? abilitiesNames.map((abilityName) => {
+      ? abilitiesNames.map(({ ability, slot }) => {
           return {
-            queryKey: ['ability_details', abilityName],
-            queryFn: async () => api.getAbilityByName(abilityName),
+            queryKey: ['ability_details', ability, slot],
+            queryFn: async () => api.getAbilityByName(ability),
             select: ({ name, effect_entries }: Ability) => {
               return {
                 name,
@@ -53,7 +53,8 @@ export const useAbilities = (pokemonName: string) => {
                     ({ language: { name: languageName } }) =>
                       languageName === LANGUAGE
                   )
-                  .map(({ effect }) => effect)[0] // list pared down to one language will always contain one entry
+                  .map(({ effect }) => effect)[0], // list pared down to one language will always contain one entry
+                slot
               };
             },
             staleTime: QUERY_STALE_TIME
