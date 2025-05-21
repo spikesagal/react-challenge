@@ -25,7 +25,7 @@ describe('Pokemons Component', () => {
 
     const { unmount } = render(
       <MemoryRouter>
-        <Pokemons />
+        <Pokemons setCurrentPage={vi.fn()} />
       </MemoryRouter>
     );
 
@@ -44,7 +44,7 @@ describe('Pokemons Component', () => {
 
     const { unmount } = render(
       <MemoryRouter>
-        <Pokemons />
+        <Pokemons setCurrentPage={vi.fn()} />
       </MemoryRouter>
     );
 

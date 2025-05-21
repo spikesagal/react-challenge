@@ -37,7 +37,10 @@ describe('Abilities Component', () => {
     const { unmount } = render(
       <MemoryRouter initialEntries={['/abilities/bulbasaur']}>
         <Routes>
-          <Route path='/abilities/:pokemonName' element={<Abilities />} />
+          <Route
+            path='/abilities/:pokemonName'
+            element={<Abilities currentPage={1} />}
+          />
         </Routes>
       </MemoryRouter>
     );
@@ -75,7 +78,10 @@ describe('Abilities Component', () => {
     const { unmount } = render(
       <MemoryRouter initialEntries={['/abilities/bulbasaur']}>
         <Routes>
-          <Route path='/abilities/:pokemonName' element={<Abilities />} />
+          <Route
+            path='/abilities/:pokemonName'
+            element={<Abilities currentPage={1} />}
+          />
         </Routes>
       </MemoryRouter>
     );

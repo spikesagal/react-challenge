@@ -14,9 +14,15 @@ function invariant(value: unknown): asserts value {
   );
 }
 
-const Abilities = (): React.ReactNode => {
+const Abilities = ({
+  currentPage
+}: {
+  currentPage: number;
+}): React.ReactNode => {
   const { pokemonName } = useParams();
   invariant(pokemonName);
+
+  const backLink = currentPage > 1 ? `/?page=${currentPage}` : '/';
 
   // using react-query useQueries to asynchronously render results;
   // ignore errors
@@ -44,7 +50,7 @@ const Abilities = (): React.ReactNode => {
         )}
       </div>
       <div className='back-link'>
-        <NavLink to='/'>Back to list view</NavLink>
+        <NavLink to={backLink}>Back to list view</NavLink>
       </div>
     </>
   );
