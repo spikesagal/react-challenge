@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { NavLink, useSearchParams } from 'react-router';
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 
@@ -8,15 +7,9 @@ import Pagination from './Pagination';
 const Pokemons = (): React.ReactNode => {
   const ENTRIES_PER_PAGE = 5;
   const [searchParams] = useSearchParams();
-  const page = useMemo(
-    () => Number(searchParams.get('page') ?? 1),
-    [searchParams]
-  );
+  const page = Number(searchParams.get('page') ?? 1);
   const { error, data, isPending } = usePokemons(page); // via useQuery
-  const totalPages = useMemo(
-    () => Math.ceil((data?.count ?? 0) / ENTRIES_PER_PAGE),
-    [data?.count]
-  );
+  const totalPages = Math.ceil((data?.count ?? 0) / ENTRIES_PER_PAGE);
 
   return (
     <>

@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { NavLink } from 'react-router';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -12,20 +11,11 @@ interface PaginationProps {
 
 const Pagination = ({ page, totalPages }: PaginationProps): React.ReactNode => {
   const firstPageLink = ''; // always redefined to blank, for brevity
-  const prevPageLink = useMemo(
-    () => (page > 2 ? `?page=${page - 1}` : ''),
-    [page]
-  );
-  const lastPageLink = useMemo(() => `?page=${totalPages}`, [totalPages]);
-  const nextPageLink = useMemo(
-    () => (page < totalPages ? `?page=${page + 1}` : lastPageLink),
-    [page, totalPages]
-  );
-  const prevDisabled = useMemo(() => (page === 1 ? 'disabled' : ''), [page]);
-  const nextDisabled = useMemo(
-    () => (page === totalPages ? 'disabled' : ''),
-    [page]
-  );
+  const prevPageLink = page > 2 ? `?page=${page - 1}` : '';
+  const lastPageLink = `?page=${totalPages}`;
+  const nextPageLink = page < totalPages ? `?page=${page + 1}` : lastPageLink;
+  const prevDisabled = page === 1 ? 'disabled' : '';
+  const nextDisabled = page === totalPages ? 'disabled' : '';
 
   return (
     <div>
