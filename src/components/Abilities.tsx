@@ -39,7 +39,10 @@ const Abilities = ({
           ({ data: ability }) =>
             ability && (
               <tr key={`${ability?.name}_${ability?.slot}`}>
-                <td data-testid={`name-${ability?.name}`} className='datum'>
+                <td
+                  data-testid={`name-${ability?.name}`}
+                  className='name datum'
+                >
                   {ability?.name}
                 </td>
                 <td data-testid={`effect-${ability?.name}`} className='datum'>

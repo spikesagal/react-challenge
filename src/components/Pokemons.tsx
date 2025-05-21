@@ -33,7 +33,7 @@ const Pokemons = ({
         <tr>
           <td>
             <NavLink key={name} to={`/abilities/${name}`}>
-              <div data-testid={`name-${name}`} className='datum'>
+              <div data-testid={`name-${name}`} className='name datum'>
                 {name}
               </div>
             </NavLink>
