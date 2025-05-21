@@ -30,25 +30,25 @@ const Abilities = ({
 
   return (
     <>
-      <div className='box'>
-        <div>
-          <div className='heading'>Ability</div>
-          <div className='heading'>Ability effect</div>
-        </div>
+      <table>
+        <tr>
+          <td className='heading'>Ability</td>
+          <td className='heading'>Ability effect</td>
+        </tr>
         {results.map(
           ({ data: ability }) =>
             ability && (
-              <div key={`${ability?.name}_${ability?.slot}`}>
-                <div data-testid={`name-${ability?.name}`} className='datum'>
+              <tr key={`${ability?.name}_${ability?.slot}`}>
+                <td data-testid={`name-${ability?.name}`} className='datum'>
                   {ability?.name}
-                </div>
-                <div data-testid={`effect-${ability?.name}`} className='datum'>
+                </td>
+                <td data-testid={`effect-${ability?.name}`} className='datum'>
                   {ability?.effect}
-                </div>
-              </div>
+                </td>
+              </tr>
             )
         )}
-      </div>
+      </table>
       <div className='back-link'>
         <NavLink to={backLink}>Back to list view</NavLink>
       </div>

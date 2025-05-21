@@ -18,26 +18,34 @@ const Pokemons = ({
   useEffect(() => setCurrentPage(page), [page]); // set the current page in shared state, for back links
 
   return (
-    <>
-      <div className='box'>
-        <div className='heading'>Pokemon name</div>
-        {error && (
-          <div data-testid='error-message' className='datum'>
+    <table>
+      <tr>
+        <th className='heading'>Pokemon name</th>
+      </tr>
+      {error && (
+        <tr>
+          <td data-testid='error-message' className='datum'>
             Something went wrong :(
-          </div>
-        )}
-        {data?.pokemons.map((name) => (
-          <NavLink key={name} to={`/abilities/${name}`}>
-            <div data-testid={`name-${name}`} className='datum'>
-              {name}
-            </div>
-          </NavLink>
-        ))}
-      </div>
-      <div className='pagination'>
-        <Pagination page={page} totalPages={totalPages} />
-      </div>
-    </>
+          </td>
+        </tr>
+      )}
+      {data?.pokemons.map((name) => (
+        <tr>
+          <td>
+            <NavLink key={name} to={`/abilities/${name}`}>
+              <div data-testid={`name-${name}`} className='datum'>
+                {name}
+              </div>
+            </NavLink>
+          </td>
+        </tr>
+      ))}
+      <tr>
+        <td className='pagination'>
+          <Pagination page={page} totalPages={totalPages} />
+        </td>
+      </tr>
+    </table>
   );
 };
 

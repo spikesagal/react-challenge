@@ -9,10 +9,15 @@ body {
   @colorHeader: #9ec1f6; 
   @colorBacklink: #6199f6;
 
+
+  // Global attrs
   font-family: arial;
+  font-size: 1em;
 
   svg {
     vertical-align: middle;
+    min-width: 1em; // minimize load-in shift
+    min-height: 1em;
   }
 
   a {
@@ -20,27 +25,31 @@ body {
     color: black;
   }
 
-  .box {
-    & > * {
-      display: flex;
+  table {
+    border-spacing: 0;
+    width: 100%;
+
+    tr {
       &:first-child {
         background-color: @colorHeader;
       }
       &:nth-child(even) {
         background-color: @colorBgAlt;
       }
-      & > * {
-        &:first-child {
-          flex: 20%;
-        } 
-        &:last-child {
-          flex: 80%;
-        }
-      }
     }
+    
+    td {
+      padding: 0;
 
-    & > a :hover {
-      background-color: @colorBgHover;
+      &:first-child {
+        flex: 20%;
+      } 
+      &:last-child {
+        flex: 80%;
+      }
+      & > a :hover {
+        background-color: @colorBgHover;
+      }
     }
   }
 
