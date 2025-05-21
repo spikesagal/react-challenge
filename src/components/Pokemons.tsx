@@ -1,5 +1,4 @@
 import { NavLink, useSearchParams } from 'react-router';
-import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 
 import { usePokemons } from 'src/hooks/PokedexConnector';
 import Pagination from './Pagination';
@@ -8,14 +7,13 @@ const Pokemons = (): React.ReactNode => {
   const ENTRIES_PER_PAGE = 5;
   const [searchParams] = useSearchParams();
   const page = Number(searchParams.get('page') ?? 1);
-  const { error, data, isPending } = usePokemons(page); // via useQuery
+  const { error, data } = usePokemons(page); // via useQuery
   const totalPages = Math.ceil((data?.count ?? 0) / ENTRIES_PER_PAGE);
 
   return (
     <>
       <div className='box'>
         <div className='heading'>Pokemon name</div>
-        {isPending && <HourglassBottomIcon />}
         {error && (
           <div data-testid='error-message' className='datum'>
             Something went wrong :(
