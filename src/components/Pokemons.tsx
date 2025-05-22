@@ -62,7 +62,7 @@ const Pokemons = ({
         })}
         <tr>
           <td className='pagination'>
-            <Pagination page={page} totalPages={totalPages} />
+            <Pagination page={page} totalPages={totalPages || '...'} />
           </td>
         </tr>
       </tbody>
