@@ -28,41 +28,43 @@ body {
     border-spacing: 0;
     width: 100%;
 
-    tr {
-      &:first-child {
-        background-color: @colorHeader;
-      }
-      &:nth-child(even) {
-        background-color: @colorBgAlt;
-      }
-
-      & a.datum {
-        &:hover {
-          background-color: @colorBgHover;
-        }
-
-        & > td {
-          display: block;
-        }
-      }
-    }
-    
-    th {
-      font-weight: normal;
-      text-align: left;
-    }
-
-    td, th {
-      padding: 0;
-    }
-
-    &.two-col {
-      td, th {
+    & > tbody {
+      tr {
         &:first-child {
-          width: 20%;
-        } 
-        &:last-child {
-          width: 80%;
+          background-color: @colorHeader;
+        }
+        &:nth-child(even) {
+          background-color: @colorBgAlt;
+        }
+
+        & a.datum {
+          &:hover {
+            background-color: @colorBgHover;
+          }
+
+          & > td {
+            display: block;
+          }
+        }
+      }
+      
+      th {
+        font-weight: normal;
+        text-align: left;
+      }
+
+      td, th {
+        padding: 0;
+      }
+
+      &.two-col {
+        td, th {
+          &:first-child {
+            width: 20%;
+          } 
+          &:last-child {
+            width: 80%;
+          }
         }
       }
     }
