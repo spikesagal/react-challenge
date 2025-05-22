@@ -57,14 +57,14 @@ body {
         padding: 0;
       }
 
-      &.two-col {
-        td, th {
-          &:first-child {
-            width: 20%;
-          } 
-          &:last-child {
-            width: 80%;
-          }
+    }
+
+    &.two-col > tbody {
+      td, th {
+        &:first-child {
+          // fixed width for name column (based on longest name),
+          // the rest will take up maximum space available
+          min-width: 8em;
         }
       }
     }
