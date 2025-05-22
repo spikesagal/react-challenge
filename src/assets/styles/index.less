@@ -76,6 +76,18 @@ body {
       padding: 0 2pt;
       vertical-align: middle;
     }
+
+    // This is a design choice, a compromise between minimal
+    // layout shift, and natural-looking text.
+    // To explain, preventing the pagination text from shifting
+    // completely will result in it looking out of alignment,
+    // but allowing a minimum width for the page counter segment
+    // only will prevent layout shift for the << < > >> buttons,
+    // but leave the page counter text looking natural / centered
+    .nav-current {
+      display: inline-block;
+      min-width: 8em;
+    }
   }
 
   .back-link {

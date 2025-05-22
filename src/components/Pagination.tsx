@@ -37,7 +37,7 @@ const Pagination = ({ page, totalPages }: PaginationProps): React.ReactNode => {
           <ChevronLeftIcon fontSize='small' />
         </span>
       </NavLink>
-      <span data-testid='nav-current'>
+      <span data-testid='nav-current' className='nav-current'>
         Page {page} of {totalPages || '...'}
       </span>
       <NavLink
