@@ -29,46 +29,44 @@ const Abilities = ({
   const results = useAbilities(pokemonName);
 
   return (
-    <>
-      <table className='two-col'>
-        <tbody>
-          <tr>
-            <th className='heading'>Ability</th>
-            <th className='heading'>Ability effect</th>
-          </tr>
-          {results.map(
-            ({ data: ability }) =>
-              ability && (
-                <tr key={`${ability?.name}_${ability?.slot}`}>
-                  <td>
-                    <span
-                      data-testid={`name-${ability?.name}`}
-                      className='name datum'
-                    >
-                      {ability?.name}
-                    </span>
-                  </td>
-                  <td>
-                    <span
-                      data-testid={`effect-${ability?.name}`}
-                      className='datum'
-                    >
-                      {ability?.effect}
-                    </span>
-                  </td>
-                </tr>
-              )
-          )}
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colSpan="2" className='back-link'>
-              <NavLink to={backLink}>Back to list view</NavLink>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-    </>
+    <table className='two-col'>
+      <tbody>
+        <tr>
+          <th className='heading'>Ability</th>
+          <th className='heading'>Ability effect</th>
+        </tr>
+        {results.map(
+          ({ data: ability }) =>
+            ability && (
+              <tr key={`${ability?.name}_${ability?.slot}`}>
+                <td>
+                  <span
+                    data-testid={`name-${ability?.name}`}
+                    className='name datum'
+                  >
+                    {ability?.name}
+                  </span>
+                </td>
+                <td>
+                  <span
+                    data-testid={`effect-${ability?.name}`}
+                    className='datum'
+                  >
+                    {ability?.effect}
+                  </span>
+                </td>
+              </tr>
+            )
+        )}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colSpan='2' className='back-link'>
+            <NavLink to={backLink}>Back to list view</NavLink>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
   );
 };
 

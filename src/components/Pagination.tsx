@@ -20,42 +20,42 @@ const Pagination = ({ page, totalPages }: PaginationProps): React.ReactNode => {
   return (
     <div>
       <NavLink
-        data-testid="nav-first"
+        data-testid='nav-first'
         to={firstPageLink}
         className={prevDisabled}
       >
         <span>
-          <FirstPageIcon fontSize="small" />
+          <FirstPageIcon fontSize='small' />
         </span>
       </NavLink>
       <NavLink
-        data-testid="nav-prev"
+        data-testid='nav-prev'
         to={prevPageLink}
         className={prevDisabled}
       >
         <span>
-          <ChevronLeftIcon fontSize="small" />
+          <ChevronLeftIcon fontSize='small' />
         </span>
       </NavLink>
-      <span data-testid="nav-current" className="nav-current">
-        Page {page} of {totalPages || "..."}
+      <span data-testid='nav-current' className='nav-current'>
+        Page {page} of {totalPages || '...'}
       </span>
       <NavLink
-        data-testid="nav-next"
+        data-testid='nav-next'
         to={nextPageLink}
         className={nextDisabled}
       >
         <span>
-          <ChevronRightIcon fontSize="small" />
+          <ChevronRightIcon fontSize='small' />
         </span>
       </NavLink>
       <NavLink
-        data-testid="nav-last"
+        data-testid='nav-last'
         to={lastPageLink}
         className={nextDisabled}
       >
         <span>
-          <LastPageIcon fontSize="small" />
+          <LastPageIcon fontSize='small' />
         </span>
       </NavLink>
     </div>
