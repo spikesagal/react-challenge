@@ -61,7 +61,7 @@ const Abilities = ({
       </tbody>
       <tfoot>
         <tr>
-          <td colSpan='2' className='back-link'>
+          <td colSpan={2} className='back-link'>
             <NavLink to={backLink}>Back to list view</NavLink>
           </td>
         </tr>
