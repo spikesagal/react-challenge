@@ -22,7 +22,7 @@ const Pokemons = ({
   const [totalPages, setTotalPages] = useState(0);
   useEffect(() => {
     if (data?.count !== undefined) {
-      setTotalPages(Math.ceil(data.count / ENTRIES_PER_PAGE), data?.count);
+      setTotalPages(Math.ceil(data.count / ENTRIES_PER_PAGE));
     }
   }, [data?.count]);
 
